@@ -9,12 +9,19 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
+# Update STATIC_URL to include a leading slash '/'
+STATIC_URL = '/static/'
+# Define STATICFILES_DIRS to specify the directory where static files are collected
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+# Define STATIC_ROOT to specify the directory where static files will be collected during production
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -50,7 +57,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'config.urls'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
